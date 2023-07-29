@@ -1174,10 +1174,32 @@ html {
   
  /* Desktop styles (default) */
 
-/* Mobile styles */
- @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   /* Add your mobile-specific styles here */
- }
+
+  /* For example, adjust the font size for better readability */
+  body {
+    font-size: 16px;
+  }
+
+  /* Simplify navigation for mobile devices */
+  /* Replace .navigation with your actual navigation class or ID */
+  .navigation {
+    display: none; /* Hide the desktop navigation */
+  }
+
+  /* Replace .mobile-navigation with your mobile navigation class or ID */
+  .mobile-navigation {
+    display: block; /* Show the mobile navigation */
+  }
+
+  /* Adjust padding and margins for smaller screens */
+  /* Replace .content with your actual content container class or ID */
+  .content {
+    padding: 10px;
+    margin: 10px;
+  }
+}
      
   
   @media screen and (max-width: 500px) {
