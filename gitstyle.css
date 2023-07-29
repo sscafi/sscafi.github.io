@@ -1174,7 +1174,7 @@ html {
  @media (max-width: 767px) {
       /* Adjust header for mobile */
       header {
-        padding: 5px;
+        padding: 6px;
       }
 
       /* Adjust main content for mobile */
@@ -1184,7 +1184,7 @@ html {
 
       /* Reduce font size for mobile */
       body {
-        font-size: 16px;
+        font-size: 14px;
       }
 
       /* Make images responsive */
