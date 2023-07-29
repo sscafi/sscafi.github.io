@@ -1171,47 +1171,33 @@ html {
         border-radius: 50%;
         transition: 0.3s;
       }
-  /* Your existing CSS styles go here */
+ @media (max-width: 767px) {
+      /* Adjust header for mobile */
+      header {
+        padding: 5px;
+      }
 
-/* Mobile styles */
-@media screen and (max-width: 768px) {
-  /* Add your mobile-specific styles here */
+      /* Adjust main content for mobile */
+      main {
+        padding: 10px;
+      }
 
-  /* For example, adjust the font size for better readability */
-  body {
-    font-size: 16px;
-  }
+      /* Reduce font size for mobile */
+      body {
+        font-size: 16px;
+      }
 
-  /* Simplify navigation for mobile devices */
-  /* Replace .navigation with your actual navigation class or ID */
-  .navigation {
-    display: none; /* Hide the desktop navigation */
-  }
+      /* Make images responsive */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
 
-  /* Replace .mobile-navigation with your mobile navigation class or ID */
-  .mobile-navigation {
-    display: block; /* Show the mobile navigation */
-  }
-
-  /* Adjust padding and margins for smaller screens */
-  /* Replace .content with your actual content container class or ID */
-  .content {
-    padding: 10px;
-    margin: 10px;
-  }
-  
-  /* Ensure images fit within the screen width */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Hide or adjust elements not needed on mobile */
-  /* Replace .sidebar with your actual sidebar class or ID */
-  .sidebar {
-    display: none;
-  }
-}
+      /* Hide or condense certain elements on mobile */
+      .hide-on-mobile {
+        display: none;
+      }
+    }
 
   
   @media screen and (max-width: 500px) {
