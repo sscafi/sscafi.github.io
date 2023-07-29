@@ -1174,22 +1174,22 @@ html {
  @media (max-width: 767px) {
       /* Adjust header for mobile */
       header {
-        padding: 5px;
+        padding: 5px;!important
       }
 
       /* Adjust main content for mobile */
       main {
-        padding: 10px;
+        padding: 10px;!important
       }
 
       /* Reduce font size for mobile */
       body {
-        font-size: 16px;
+        font-size: 16px;!important
       }
 
       /* Make images responsive */
       img {
-        max-width: 100%;
+        max-width: 100%;!important
         height: auto;
       }
 
