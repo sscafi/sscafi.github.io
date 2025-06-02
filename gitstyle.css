@@ -884,6 +884,7 @@ header .seperator-skew svg .fill-white {
   z-index: 0;
   object-fit: cover;
   display: block;
+  pointer-events: none; /* Prevent interaction with video */
 }
 
 #particles-js-skills {
@@ -1245,4 +1246,38 @@ header #particles-js {
   height: 100%;
   position: absolute;
   pointer-events: none;
+}
+
+/* Remove video controls and play button */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* Fix scrollbar and overflow issues */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background: #181a1b;
+}
+
+/* Hide scrollbar for all browsers */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
