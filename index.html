@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,18 +8,121 @@
    
 
 
-    <title>Saher Scafi | Software Developer</title>
+    <title>Saher Scafi | Software Engineer</title>
     <style>
       
 
-      #video-background {
-        position: fixed;
-        top: 0;
-        left: 0;
+      .hero {
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      .typing-text {
+        color: #007bff;
+        font-weight: 600;
+        min-height: 1.5em;
+      }
+
+      .social-badges {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .social-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        text-decoration: none;
+        color: white;
+        transition: transform 0.2s;
+      }
+
+      .social-badge:hover {
+        transform: translateY(-2px);
+      }
+
+      .badge-linkedin {
+        background-color: #0077b5;
+      }
+
+      .badge-leetcode {
+        background-color: #ffa116;
+      }
+
+      .badge-email {
+        background-color: #ea4335;
+      }
+
+      .badge-icon {
+        margin-right: 0.5rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .skill-badge {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: #f8f9fa;
+        transition: transform 0.2s;
+      }
+
+      .skill-badge:hover {
+        transform: translateY(-2px);
+      }
+
+      .skill-badge img {
+        width: 24px;
+        height: 24px;
+        margin-right: 0.5rem;
+      }
+
+      .skill-badge span {
+        font-size: 0.9rem;
+        color: #333;
+      }
+
+      .project-description {
+        max-height: 1.5em;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        line-height: 1.5;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+      }
+
+      .project-description.expanded {
+        max-height: 1000px;
+        -webkit-line-clamp: unset;
+      }
+
+      .read-more {
+        color: #007bff;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin-left: 0.5rem;
+        user-select: none;
+      }
+
+      .read-more:hover {
+        text-decoration: underline;
+      }
+
+      .project-left img {
         width: 100%;
-        height: 100%;
-        z-index: -1;
+        height: 200px;
         object-fit: cover;
+        border-radius: 8px;
       }
     </style>
     
@@ -63,10 +165,6 @@
     </script>
   </head>
   <body>
-    <video id="video-background" autoplay muted loop>
-      <source src="INV/background1.mp4" type="video/mp4" />
-      <!-- Add additional <source> elements for different video formats -->
-    </video> 
     <!-- HEADER -->
     <header id="header">
       <div id="particles-js">
@@ -134,17 +232,28 @@
         <div class="hero">
           <div data-aos="fade-up">
             <h1 class="h1">
-              
-              Hello , my name is <span class="main-font text-blue">Saher</span>
+              Hello, I'm <span class="main-font text-blue">Saher Scafi</span> 👋
             </h1>
+            <div class="typing-text" id="typing-text"></div>
             <p class="student" id="student">
-              I'm currently a software developer who studied at  <a href="https://www.yorku.ca/" class="blue-link-underline" target="_blank">York University.</a> I spend my day-to-day developing projects with TypeScript, React.js, Node.js and AWS.
+              I'm a Software Engineer passionate about Cybersecurity, AI, Machine Learning, and Robotics 🤖
             </p>
+            <div class="social-badges">
+              <a href="https://www.linkedin.com/in/sscafi/" class="social-badge badge-linkedin" target="_blank">
+                <i class="fab fa-linkedin badge-icon"></i> LinkedIn
+              </a>
+              <a href="https://leetcode.com/sscafi/" class="social-badge badge-leetcode" target="_blank">
+                <i class="fas fa-code badge-icon"></i> LeetCode
+              </a>
+              <a href="mailto:saherscafi@gmail.com" class="social-badge badge-email">
+                <i class="fas fa-envelope badge-icon"></i> Email
+              </a>
+            </div>
             <div class="hero-btns">
               <a href="#projects" class="btn-blue"><i class="fas fa-code"></i> Projects</a>
-              <a href="https://github.com/sscafi" class="btn-blue-outline mx-1" id="projects-btn"
-                target="_blank"><i class="fab fa-github"></i> Github</a
-              >
+              <a href="https://github.com/sscafi" class="btn-blue-outline mx-1" target="_blank">
+                <i class="fab fa-github"></i> Github
+              </a>
             </div>
           </div>
         </div>
@@ -162,18 +271,10 @@
           </ul>
         </div>
       </div>
-
-      <div class="seperator-skew">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-
     </header>
 
     <!-- PROJECTS -->
     <section id="projects" class="projects">
-      
       <div class="container">
         <h2 class="main-font">My<span class="text-blue main-font"> Projects</span></h2>
         <div class="project-row" data-aos="fade-up">
@@ -191,7 +292,8 @@
               <li><span class="iconify" data-icon="logos:nodejs" data-inline="false"></span></li>
               <li><span class="iconify" data-icon="logos:express" data-inline="false"></span></li>
             </ul>
-            <p>Cryptocurrency sentiment analysis on Twitter posts. Users can see the overall sentiment (positive, negative or neutral) of different Cryptocurrencies based on tweets. Users can also view keywords and an average sentiment score. React frontend and Node.js backend. Stateless application that uses Elasticache and S3 on AWS for persistence. Application was setup with an autoscaling group to scale in and out as needed.</p>
+            <p class="project-description">Cryptocurrency sentiment analysis on Twitter posts. Users can see the overall sentiment (positive, negative or neutral) of different Cryptocurrencies based on tweets. Users can also view keywords and an average sentiment score. React frontend and Node.js backend. Stateless application that uses Elasticache and S3 on AWS for persistence. Application was setup with an autoscaling group to scale in and out as needed.</p>
+            <span class="read-more">Read More</span>
             <div class="project-links">
               
               <a href="https://github.com/sscafi/Crypto-Crowd-Sentiment-Analysis" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i
@@ -211,7 +313,8 @@
               <li><span class="iconify" data-icon="logos:java" data-inline="false"></span></li> 
               <li><span class="iconify" data-icon="logos:mariadb-icon" data-inline="false"></span></li>
             </ul>
-            <p>a client-server system in Java for trading of virtual assets within departments of a company. Facilitated trades via a marketplace model where users can buy and sell assets. Admins of an organisation can create assets, users and modify details. Uses MariaDB as a database and Swing for the GUI.</p>
+            <p class="project-description">a client-server system in Java for trading of virtual assets within departments of a company. Facilitated trades via a marketplace model where users can buy and sell assets. Admins of an organisation can create assets, users and modify details. Uses MariaDB as a database and Swing for the GUI.</p>
+            <span class="read-more">Read More</span>
             <div class="project-links">
               
               <a href="https://github.com/sscafi/Company-Asset-Trading" class="btn-blue-outline btn-small" target="_blank"> <i class="fab fa-github"></i
@@ -235,7 +338,8 @@
               <li><span class="iconify" data-icon="logos:bootstrap" data-inline="false"></span></li>
               <li><span class="iconify" data-icon="logos:mysql"></span></li>
             </ul>
-            <p>JobTrack allows you to keep track of your applications while job hunting. For each job you can view its details, keep a checklist and upload related files (e.g. resumes). You can also add your interviews to a calendar. The application is built with Laravel.</p>
+            <p class="project-description">JobTrack allows you to keep track of your applications while job hunting. For each job you can view its details, keep a checklist and upload related files (e.g. resumes). You can also add your interviews to a calendar. The application is built with Laravel.</p>
+            <span class="read-more">Read More</span>
             <div class="project-links">
               
               <a href="https://github.com/sscafi/job-tracker/tree/main" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i
@@ -256,7 +360,8 @@
               <li><span class="iconify" data-icon="logos:mysql" data-inline="false"></span></span></li>
               
             </ul>
-            <p>AI assistant with natural language processing (NLP), a recommendation system, and database management capabilities. The AI assistant is designed to learn user preferences, provide recommendations based on those preferences, and store user data in a linked database. The implementation utilizes Python and several libraries, including NLTK, spaCy, surprise, and mysql.connector.</p>
+            <p class="project-description">AI assistant with natural language processing (NLP), a recommendation system, and database management capabilities. The AI assistant is designed to learn user preferences, provide recommendations based on those preferences, and store user data in a linked database. The implementation utilizes Python and several libraries, including NLTK, spaCy, surprise, and mysql.connector.</p>
+            <span class="read-more">Read More</span>
             <div class="project-links">
               
               <a href="https://github.com/sscafi/python_projects/tree/main/Jarvis" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i
@@ -276,7 +381,8 @@
               <li><span class="iconify" data-icon="logos:nodejs" data-inline="false"></span></li>
        
             </ul>
-            <p>The Music Sorting and Recommendation System project folder contains a collection of code files and resources aimed at providing users with the ability to sort their Spotify music library based on beats per minute (BPM) and receive personalized song recommendations. The folder includes sample music data files in various formats and a Python script called `music_sorter.py` that utilizes libraries such as librosa or pydub to extract BPM information from audio files. The script enables users to organize their Spotify music files into separate playlists or folders based on BPM. Additionally, the project folder serves as a foundation for future enhancements and the integration of recommendation algorithms to provide tailored song recommendations based on the user's listening preferences within the Spotify platform.</p>
+            <p class="project-description">The Music Sorting and Recommendation System project folder contains a collection of code files and resources aimed at providing users with the ability to sort their Spotify music library based on beats per minute (BPM) and receive personalized song recommendations. The folder includes sample music data files in various formats and a Python script called `music_sorter.py` that utilizes libraries such as librosa or pydub to extract BPM information from audio files. The script enables users to organize their Spotify music files into separate playlists or folders based on BPM. Additionally, the project folder serves as a foundation for future enhancements and the integration of recommendation algorithms to provide tailored song recommendations based on the user's listening preferences within the Spotify platform.</p>
+            <span class="read-more">Read More</span>
             <div class="project-links">
             
               <a href="https://github.com/sscafi/spotify" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i
@@ -296,7 +402,8 @@
               <p class="text-grey"><b>Made with: </b></p>
               <li><span class="iconify" data-icon="logos:python" data-inline="false"></span></li>
             </ul>
-            <p>Python program that implements a breadth-first search algorithm to generate a minimal spanning tree. Problem was to calculate a shortest path from a starting vertex in a graph to each other vertex. The vertices represent people and each person is related to every other person through parent-child relationships. A person can see how they are related to each other person in the tree.</p>
+            <p class="project-description">Python program that implements a breadth-first search algorithm to generate a minimal spanning tree. Problem was to calculate a shortest path from a starting vertex in a graph to each other vertex. The vertices represent people and each person is related to every other person through parent-child relationships. A person can see how they are related to each other person in the tree.</p>
+            <span class="read-more">Read More</span>
             <div class="project-links">
               
               <a href="https://github.com/sscafi/python_projects/blob/main/FamilyTree-bfs.py" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i
@@ -309,40 +416,34 @@
     
      <!-- SKILLS -->
     <section id="skills" class="skills">
-      <div class="seperator-skew-top">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-      <div class="container" data-aos="fade-in"> 
-        <h2 class="text-white main-font">Technical <span class="text-blue main-font">Skills</span></h2>
-        <ul class="skills-icons">
-          
-          <li><span class="iconify" data-icon="logos:javascript" data-inline="false" data-width="90px" data-height="90px"></span><span>JavaScript</span></li>
-          <li><span class="iconify" data-icon="vscode-icons:file-type-typescript-official" data-inline="false" data-width="90px" data-height="90px"></span><span>TypeScript</span></li>
-          <li><span class="iconify" data-icon="logos:react" data-inline="false" data-width="90px" data-height="90px"></span><span>React</span></li>
-          <li><span class="iconify" data-icon="logos:vue" data-inline="false" data-width="90px" data-height="90px"></span><span class="text-center">Vue</span></li>       
-          <li><span class="iconify" data-icon="logos:nodejs-icon" data-inline="false" data-width="90px" data-height="90px"></span><span>Node.js</span></li>
-          <li><span class="iconify" data-icon="logos:php" data-inline="false" data-width="90px" data-height="90px"></span><span class="text-center">PHP</span></li>       
-          <li><span class="iconify" data-icon="logos:laravel" data-inline="false" data-width="90px" data-height="90px"></span><span class="text-center">Laravel</span></li>       
-          <li><span class="iconify" data-icon="logos:python" data-inline="false" data-width="90px" data-height="90px"></span><span>Python</span></li>
-          <li><span class="iconify" data-icon="logos:java" data-inline="false" data-width="90px" data-height="90px"></span><span>Java</span></li>
-          <li><span class="iconify" data-icon="vscode-icons:file-type-html" data-inline="false" data-width="90px" data-height="90px"></span><span>HTML</span></li>
-          <li><span class="iconify" data-icon="vscode-icons:file-type-css" data-inline="false" data-width="90px" data-height="90px"></span><span>CSS</span></li>
-          <li><span class="iconify" data-icon="vscode-icons:file-type-scss2" data-inline="false" data-width="90px" data-height="90px"></span><span>SCSS</span></li>
-          <li><span class="iconify" data-icon="logos:git-icon" data-inline="false" data-width="90px" data-height="90px"></span><span>Git</span></li>
-          <li><span class="iconify" data-icon="logos:bootstrap" data-inline="false" data-width="90px" data-height="90px"></span><span>Bootstrap</span></li>
-          <li><span class="iconify" data-icon="logos:mysql" data-inline="false" data-width="90px" data-height="90px"></span><span>MySQL</span></li>
-          <li><span class="iconify" data-icon="flat-color-icons:linux" data-inline="false" data-width="90px" data-height="90px"></span><span>Linux</span></li>          
-          <li><span class="iconify" data-icon="logos:shopify" data-inline="false" data-width="90px" data-height="90px"></span><span>Shopify</span></li>          
-          <li><span class="iconify aws-logo" data-icon="logos:aws" data-inline="false" data-width="90px" data-height="90px"></span><span class="text-center">Amazon Web <br> Services</span></li>  
-        </ul>
-      </div>
-
-      <div class="seperator-skew-bottom">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
+      <video id="video-background" autoplay muted loop playsinline>
+        <source src="INV/background1.mp4" type="video/mp4" />
+      </video>
+      <div id="particles-js-skills">
+        <div class="container" data-aos="fade-in">
+          <h2 class="text-white main-font">Technical <span class="text-blue main-font">Skills</span></h2>
+          <ul class="skills-icons">
+            <li><span class="iconify" data-icon="logos:python" data-inline="false" data-width="90px" data-height="90px"></span><span>Python</span></li>
+            <li><span class="iconify" data-icon="logos:javascript" data-inline="false" data-width="90px" data-height="90px"></span><span>JavaScript</span></li>
+            <li><span class="iconify" data-icon="logos:java" data-inline="false" data-width="90px" data-height="90px"></span><span>Java</span></li>
+            <li><span class="iconify" data-icon="logos:c-plusplus" data-inline="false" data-width="90px" data-height="90px"></span><span>C++</span></li>
+            <li><span class="iconify" data-icon="logos:react" data-inline="false" data-width="90px" data-height="90px"></span><span>React</span></li>
+            <li><span class="iconify" data-icon="logos:nodejs-icon" data-inline="false" data-width="90px" data-height="90px"></span><span>Node.js</span></li>
+            <li><span class="iconify" data-icon="logos:mysql" data-inline="false" data-width="90px" data-height="90px"></span><span>MySQL</span></li>
+            <li><span class="iconify" data-icon="logos:mongodb" data-inline="false" data-width="90px" data-height="90px"></span><span>MongoDB</span></li>
+            <li><span class="iconify" data-icon="logos:git-icon" data-inline="false" data-width="90px" data-height="90px"></span><span>Git</span></li>
+            <li><span class="iconify" data-icon="flat-color-icons:linux" data-inline="false" data-width="90px" data-height="90px"></span><span>Linux</span></li>
+            <li><span class="iconify" data-icon="simple-icons:kalilinux" data-inline="false" data-width="90px" data-height="90px" style="color: #557C94;"></span><span>Kali Linux</span></li>
+            <li><span class="iconify" data-icon="simple-icons:wireshark" data-inline="false" data-width="90px" data-height="90px" style="color: #1679A7;"></span><span>Wireshark</span></li>
+            <li><span class="iconify" data-icon="simple-icons:metasploit" data-inline="false" data-width="90px" data-height="90px" style="color: #000000;"></span><span>Metasploit</span></li>
+            <li><svg width="90" height="90" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#F7B93E"/>
+              <path d="M2 17L12 22L22 17" stroke="#F7B93E" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="#F7B93E" stroke-width="2"/>
+            </svg><span>Nmap</span></li>
+            <li><span class="iconify" data-icon="simple-icons:burpsuite" data-inline="false" data-width="90px" data-height="90px" style="color: #FF6633;"></span><span>Burp Suite</span></li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -465,19 +566,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
 
     <script>
-      particlesJS.load('particles-js', './particles.json', function(){
-        console.log("particles.json loaded...")
-      })
-
-      particlesJS.load('skills', "particles.json", function(){
-        console.log("particles.json loaded...")
-      })
-
-      particlesJS.load('footer', "particles.json", function(){
-        console.log("particles.json loaded...")
-      })
-
-      particlesJS.load()
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          console.log('Initializing particles...');
+          particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('Header particles loaded successfully');
+          });
+          particlesJS.load('particles-js-skills', 'particles.json', function() {
+            console.log('Skills particles loaded successfully');
+          });
+        } catch (error) {
+          console.error('Error loading particles:', error);
+        }
+      });
     </script>
 
     <script defer src= "gitevents.jsx"></script>
@@ -486,6 +587,45 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
+    </script>
+
+    <script>
+      // Read More functionality
+      document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function() {
+          const description = this.previousElementSibling;
+          const isExpanded = description.classList.contains('expanded');
+          
+          description.classList.toggle('expanded');
+          this.textContent = isExpanded ? 'Read More' : 'Read Less';
+        });
+      });
+
+      // Typing animation
+      const texts = ['Software Engineer', 'Cybersecurity Enthusiast', 'AI/ML Developer', 'Problem Solver'];
+      let count = 0;
+      let index = 0;
+      let currentText = '';
+      let letter = '';
+
+      function type() {
+        if (count === texts.length) {
+          count = 0;
+        }
+        currentText = texts[count];
+        letter = currentText.slice(0, ++index);
+
+        document.querySelector('#typing-text').textContent = letter;
+        if (letter.length === currentText.length) {
+          count++;
+          index = 0;
+          setTimeout(type, 2000);
+        } else {
+          setTimeout(type, 100);
+        }
+      }
+
+      type();
     </script>
 
   </body>
