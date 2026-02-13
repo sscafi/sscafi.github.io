@@ -431,59 +431,8 @@
                 </div>
 
                 <div id="main-content" style="display: none;">
-                    <pre class="ascii-art">
-   _____ _____  _____          ______ _____ 
-  / ____/ ____// ____|   /\   |  ____|_   _|
- | (___| (___| |       /  \  | |__    | |  
-  \___ \\___ \| |      / /\ \ |  __|   | |  
-  ____) |___) | |____ / ____ \| |     _| |_ 
- |_____/_____/ \_____/_/    \_\_|    |_____|
-                                            
-    </pre>
-
-                    <div class="output">
-                        <span class="prompt-user">SSCAFI</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> whoami
-                    </div>
-                    <div class="output" style="margin-left: 20px;" id="bio-output"></div>
-
-                    <div class="section" id="section-contact">
-                        <div class="output" style="margin-top: 20px;">
-                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat contact.txt
-                        </div>
-                        <div class="output" style="margin-left: 20px;" id="contact-output"></div>
-                    </div>
-
-                    <div class="section" id="section-projects">
-                        <div class="output">
-                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> ls -la projects/
-                        </div>
-                        <div id="projects-container"></div>
-                    </div>
-
-                    <div class="section" id="section-skills">
-                        <div class="output">
-                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat skills.conf
-                        </div>
-                        <div class="skills-grid" id="skills-container"></div>
-                    </div>
-
-                    <div class="section" id="section-education">
-                        <div class="output">
-                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat education.txt
-                        </div>
-                        <div class="output" style="margin-left: 20px; margin-top: 15px;" id="education-output"></div>
-                    </div>
-
-                    <div class="section" id="section-certifications">
-                        <div class="output">
-                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat certs.txt
-                        </div>
-                        <div class="output" style="margin-left: 20px; margin-top: 15px;" id="certifications-output"></div>
-                    </div>
-
-                    <div class="section" id="section-github-stats" style="margin-top: 15px;"></div>
-
-                    <div class="output command-line" style="margin-top: 30px;">
+                    <div id="terminal-output"></div>
+                    <div class="output command-line" id="command-line">
                         <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span>
                         <input type="text" class="command-input" id="command-input" placeholder=" " autocomplete="off" spellcheck="false" aria-label="Enter command">
                         <span class="cursor" id="input-cursor"></span>
@@ -563,126 +512,177 @@
             loadPortfolioData();
         }, 2500);
 
+        let portfolioData = null;
+
         function loadPortfolioData() {
             fetch('data.json')
                 .then(res => { if (!res.ok) throw new Error('Failed to load'); return res.json(); })
                 .then(data => {
-                    renderBio(data.bio);
-                    renderContact(data.contact);
-                    renderProjects(data.projects);
-                    renderSkills(data.skills);
-                    renderEducation(data.education);
-                    renderCertifications(data.certifications);
+                    portfolioData = data;
+                    initTerminal();
                     setupCommandInput();
-                    fetchGitHubStats();
                 })
                 .catch(() => {
-                    const msg = '<span class="output-error">[ERROR] Could not load portfolio data. Check data.json.</span>';
-                    document.getElementById('bio-output').innerHTML = msg;
+                    initTerminal();
+                    appendOutput('<span class="output-error">[ERROR] Could not load data.json</span>');
+                    setupCommandInput();
                 });
         }
 
-        function renderCertifications(certs) {
-            const el = document.getElementById('certifications-output');
-            if (!el || !certs || !certs.length) return;
-            const html = certs.map(c =>
-                `<span style="color: #00ffff;">${escapeHtml(c.name)}</span> <span style="color: #ffff00;">${escapeHtml(c.status)}</span><br>`
-            ).join('');
-            el.innerHTML = html;
+        function initTerminal() {
+            const out = document.getElementById('terminal-output');
+            out.innerHTML = '';
+            out.appendChild(document.createElement('pre')).className = 'ascii-art';
+            out.querySelector('pre').textContent = [
+                '   _____ _____  _____          ______ _____ ',
+                '  / ____/ ____// ____|   /\\   |  ____|_   _|',
+                ' | (___| (___| |       /  \\  | |__    | |  ',
+                '  \\___ \\\\___ \\| |      / /\\ \\ |  __|   | |  ',
+                '  ____) |___) | |____ / ____ \\| |     _| |_ ',
+                ' |_____/_____/ \\_____/_/    \\_\\_|    |_____|',
+                ''
+            ].join('\n');
+            const helpLine = document.createElement('div');
+            helpLine.className = 'output';
+            helpLine.style.marginTop = '15px'; helpLine.style.marginBottom = '20px';
+            helpLine.innerHTML = '<span class="output-info">Type <span class="prompt">help</span> for available commands.</span>';
+            out.appendChild(helpLine);
         }
 
-        function fetchGitHubStats() {
-            const container = document.getElementById('section-github-stats');
-            if (!container) return;
+        function promptHtml() {
+            return '<span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> ';
+        }
+
+        function appendCommandLine(cmdText) {
+            const out = document.getElementById('terminal-output');
+            const line = document.createElement('div');
+            line.className = 'output';
+            line.innerHTML = promptHtml() + escapeHtml(cmdText);
+            out.appendChild(line);
+        }
+
+        function appendOutput(html) {
+            const out = document.getElementById('terminal-output');
+            const wrap = document.createElement('div');
+            wrap.className = 'output';
+            wrap.style.marginLeft = '20px';
+            wrap.style.marginBottom = '15px';
+            wrap.innerHTML = html;
+            out.appendChild(wrap);
+        }
+
+        function appendNewInputLine() {
+            const out = document.getElementById('terminal-output');
+            const line = document.createElement('div');
+            line.className = 'output command-line';
+            line.innerHTML = promptHtml() + '<input type="text" class="command-input" autocomplete="off" spellcheck="false" aria-label="Enter command"><span class="cursor"></span>';
+            out.appendChild(line);
+            const input = line.querySelector('input');
+            input.focus();
+            input.addEventListener('keydown', onCommandKeydown);
+        }
+
+        function runCommand(cmd, data) {
+            const c = (cmd || '').trim().toLowerCase();
+            if (c === 'help' || c === '') {
+                return '<span class="output-info">' +
+                    'whoami &nbsp;&nbsp; — about me<br>' +
+                    'cat contact.txt &nbsp;&nbsp; — email, LinkedIn, GitHub, LeetCode<br>' +
+                    'cat education.txt &nbsp;&nbsp; — education<br>' +
+                    'cat certs.txt &nbsp;&nbsp; — certifications & training<br>' +
+                    'cat skills.conf &nbsp;&nbsp; — skills<br>' +
+                    'ls projects &nbsp;&nbsp; — projects (or: ls -la projects/)<br>' +
+                    'github &nbsp;&nbsp; — GitHub stats<br>' +
+                    'clear &nbsp;&nbsp; — clear screen<br>' +
+                    'help &nbsp;&nbsp; — this message</span>';
+            }
+            if (c === 'clear') return null;
+            if (!data) return '<span class="output-error">[ERROR] Data not loaded.</span>';
+
+            if (c === 'whoami') {
+                return (data.bio && data.bio.lines) ? data.bio.lines.join('<br>') : '';
+            }
+            if (c === 'cat contact.txt' || c === 'contact' || c === 'cat contact') {
+                const contact = data.contact || [];
+                return contact.map(x => {
+                    const t = x.external ? ' target="_blank"' : '';
+                    return `${x.icon} <a href="${escapeHtml(x.url)}"${t}>${escapeHtml(x.label)}</a>`;
+                }).join('<br>');
+            }
+            if (c === 'cat education.txt' || c === 'education' || c === 'cat education') {
+                const edu = data.education;
+                if (!edu) return '';
+                const bullets = (edu.bullets || []).map((b, i, arr) => (i === arr.length - 1 ? '└──' : '├──') + ' ' + b).join('<br>');
+                return '<span style="color:#00ffff">🎓 ' + escapeHtml(edu.school) + '</span><br><span style="color:#ffff00">' + escapeHtml(edu.degree) + '</span><br><span style="color:#00ff00">' + bullets + '</span>';
+            }
+            if (c === 'cat certs.txt' || c === 'certs' || c === 'cat certs') {
+                const certs = data.certifications || [];
+                return certs.map(x => '<span style="color:#00ffff">' + escapeHtml(x.name) + '</span> <span style="color:#ffff00">' + escapeHtml(x.status) + '</span>').join('<br>');
+            }
+            if (c === 'cat skills.conf' || c === 'skills' || c === 'cat skills') {
+                const skills = data.skills || [];
+                return '<div class="skills-grid">' + skills.map(s => '<div class="skill-item">' + escapeHtml(s) + '</div>').join('') + '</div>';
+            }
+            if (c === 'ls' || c === 'ls projects' || c === 'ls -la' || c === 'ls -la projects/' || c === 'ls -la projects' || c === 'projects') {
+                const projects = data.projects || [];
+                return projects.map(p => {
+                    const techStr = (p.tech || []).map(t => '[' + t + ']').join(' ');
+                    return '<div class="project-card"><div class="project-title">' + (p.emoji || '📁') + ' ' + escapeHtml(p.title) + '</div><div class="project-tech">' + escapeHtml(techStr) + '</div><div class="project-desc">' + escapeHtml(p.description) + '</div><div><a href="' + escapeHtml(p.url) + '" target="_blank" class="project-link">→ View Source</a></div></div>';
+                }).join('');
+            }
+            if (c === 'github') {
+                return '<span class="output-info">Fetching GitHub stats...</span>';
+            }
+            return '<span class="output-error">Command not found: ' + escapeHtml(cmd.trim()) + '. Type <span class="prompt">help</span> for available commands.</span>';
+        }
+
+        function doGitHubThenAppend() {
             fetch('https://api.github.com/users/sscafi')
                 .then(res => res.ok ? res.json() : Promise.reject())
                 .then(user => {
-                    const repos = user.public_repos;
-                    const html = `<div class="output">
-                        <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> github --stats
-                    </div>
-                    <div class="output" style="margin-left: 20px;">
-                        <span class="output-info">Public repos: ${repos}</span>
-                    </div>`;
-                    container.innerHTML = html;
+                    const el = document.getElementById('terminal-output').lastElementChild;
+                    if (el && el.classList.contains('output')) el.innerHTML = '<span class="output-info">Public repos: ' + user.public_repos + '</span>';
                 })
-                .catch(() => { container.innerHTML = ''; });
+                .catch(() => {
+                    const el = document.getElementById('terminal-output').lastElementChild;
+                    if (el && el.classList.contains('output')) el.innerHTML = '<span class="output-error">Could not fetch GitHub stats.</span>';
+                });
+        }
+
+        function onCommandKeydown(e) {
+            if (e.key !== 'Enter') return;
+            e.preventDefault();
+            const input = e.target;
+            const cmd = (input.value || '').trim();
+            const out = document.getElementById('terminal-output');
+            const commandLine = input.closest('.command-line');
+
+            // Move current line into scrollback: show prompt + command text (no input)
+            const committed = document.createElement('div');
+            committed.className = 'output';
+            committed.innerHTML = promptHtml() + (cmd ? escapeHtml(cmd) : '');
+            out.appendChild(committed);
+            commandLine.remove();
+
+            if (cmd.toLowerCase() === 'clear') {
+                initTerminal();
+                appendNewInputLine();
+                return;
+            }
+
+            const outputHtml = runCommand(cmd, portfolioData);
+            if (outputHtml !== null) appendOutput(outputHtml);
+            if (cmd.toLowerCase() === 'github') doGitHubThenAppend();
+
+            appendNewInputLine();
+            document.getElementById('terminal-output').parentElement.scrollTop = document.getElementById('terminal-output').parentElement.scrollHeight;
         }
 
         function setupCommandInput() {
             const input = document.getElementById('command-input');
-            const cursor = document.getElementById('input-cursor');
             if (!input) return;
-            const commands = {
-                contact: 'section-contact',
-                projects: 'section-projects',
-                skills: 'section-skills',
-                education: 'section-education',
-                certs: 'section-certifications',
-                help: null
-            };
-            input.addEventListener('keydown', function(e) {
-                if (e.key !== 'Enter') return;
-                e.preventDefault();
-                const cmd = (this.value || '').trim().toLowerCase();
-                this.value = '';
-                if (commands[cmd] && commands[cmd] !== null) {
-                    const el = document.getElementById(commands[cmd]);
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else if (cmd === 'help' || cmd === '') {
-                    const help = 'Commands: contact | projects | skills | education | certs | help';
-                    const line = document.createElement('div');
-                    line.className = 'output';
-                    line.style.marginLeft = '20px';
-                    line.innerHTML = '<span class="output-info">' + help + '</span>';
-                    input.parentElement.insertBefore(line, input);
-                }
-            });
-            setTimeout(function() { input.focus(); }, 100);
-        }
-
-        function renderBio(bio) {
-            document.getElementById('bio-output').innerHTML = (bio.lines || []).join('<br>');
-        }
-
-        function renderContact(contact) {
-            const html = (contact || []).map(c => {
-                const target = c.external ? ' target="_blank"' : '';
-                return `${c.icon} <a href="${c.url}"${target}>${c.label}</a>`;
-            }).join('<br>');
-            document.getElementById('contact-output').innerHTML = html;
-        }
-
-        function renderProjects(projects) {
-            const container = document.getElementById('projects-container');
-            container.innerHTML = (projects || []).map(p => {
-                const techStr = (p.tech || []).map(t => `[${t}]`).join(' ');
-                return `
-                    <div class="project-card">
-                        <div class="project-title">${p.emoji || '📁'} ${escapeHtml(p.title)}</div>
-                        <div class="project-tech">${escapeHtml(techStr)}</div>
-                        <div class="project-desc">${escapeHtml(p.description)}</div>
-                        <div><a href="${escapeHtml(p.url)}" target="_blank" class="project-link">→ View Source</a></div>
-                    </div>`;
-            }).join('');
-        }
-
-        function renderSkills(skills) {
-            document.getElementById('skills-container').innerHTML = (skills || [])
-                .map(s => `<div class="skill-item">${escapeHtml(s)}</div>`).join('');
-        }
-
-        function renderEducation(edu) {
-            if (!edu) return;
-            const bulletsArr = edu.bullets || [];
-            const bullets = bulletsArr.map((b, i) => {
-                const prefix = i === bulletsArr.length - 1 ? '└──' : '├──';
-                return `${prefix} ${b}`;
-            }).join('<br>');
-            document.getElementById('education-output').innerHTML =
-                `<span style="color: #00ffff;">🎓 ${escapeHtml(edu.school)}</span><br>
-                 <span style="color: #ffff00;">${escapeHtml(edu.degree)}</span><br>
-                 <span style="color: #00ff00;">${bullets}</span>`;
+            input.addEventListener('keydown', onCommandKeydown);
+            setTimeout(() => input.focus(), 200);
         }
 
         function escapeHtml(text) {
@@ -690,9 +690,6 @@
             div.textContent = text;
             return div.innerHTML;
         }
-
-        // Prevent right-click for that hacker feel (optional)
-        // document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
