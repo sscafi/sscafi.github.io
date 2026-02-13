@@ -2,6 +2,7 @@
   "bio": {
     "lines": [
       "> Software Engineer | Cybersecurity Enthusiast",
+      "> Security research, defensive tooling & educational scripts (authorized use only)",
       "> Passionate about AI/ML, Robotics & Security",
       "> York University - B.Sc. Computer Science",
       "> Focus: Networks & Security, Mobile Apps, AI/ML"
@@ -11,7 +12,8 @@
     { "icon": "📧", "label": "Email", "url": "mailto:saherscafi@gmail.com" },
     { "icon": "💼", "label": "LinkedIn", "url": "https://www.linkedin.com/in/sscafi/", "external": true },
     { "icon": "💻", "label": "GitHub", "url": "https://github.com/sscafi", "external": true },
-    { "icon": "🏆", "label": "LeetCode", "url": "https://leetcode.com/sscafi/", "external": true }
+    { "icon": "🏆", "label": "LeetCode", "url": "https://leetcode.com/sscafi/", "external": true },
+    { "icon": "📝", "label": "Write-ups", "url": "https://github.com/sscafi/cybersec", "external": true }
   ],
   "projects": [
     {
@@ -53,5 +55,10 @@
       "Minor: Mobile Applications",
       "Minor: Artificial Intelligence & Machine Learning"
     ]
-  }
+  },
+  "certifications": [
+    { "name": "PortSwigger Web Security Academy", "status": "In progress" },
+    { "name": "HackTheBox", "status": "Active" },
+    { "name": "CTFs & custom security scripts", "status": "Ongoing" }
+  ]
 }

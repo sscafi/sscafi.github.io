@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSCAFI@terminal:~$</title>
+    <meta name="description" content="Saher Scafi — Software Engineer &amp; Cybersecurity Enthusiast. Security research, defensive tooling, firmware analysis, and educational scripts.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="SSCAFI | Software Engineer &amp; Cybersecurity">
+    <meta property="og:description" content="Security research, defensive tooling &amp; educational scripts. Portfolio: projects, skills, and contact.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sscafi.github.io/">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="SSCAFI | Software Engineer &amp; Cybersecurity">
+    <meta name="twitter:description" content="Security research, defensive tooling &amp; educational scripts. Portfolio: projects, skills, and contact.">
+    <!-- Favicon (terminal-style) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230a0a0a' width='32' height='32'/><text x='4' y='22' font-family='monospace' font-size='14' fill='%2300ff00'>&gt;_</text></svg>">
     <style>
         * {
             margin: 0;
@@ -270,10 +282,14 @@
             border: none;
             color: #00ff00;
             font-family: 'Courier New', monospace;
-            font-size: 16px;
+            font-size: 18px;
             outline: none;
             width: 100%;
             caret-color: #00ff00;
+        }
+
+        .command-line {
+            font-size: 18px;
         }
 
         .command-line {
@@ -360,6 +376,32 @@
         @keyframes fadeIn {
             to { opacity: 1; }
         }
+
+        /* Print-friendly: hide effects, clean contrast */
+        @media print {
+            body::before, body::after { display: none !important; }
+            #matrix-canvas { display: none !important; }
+            body { background: #fff; color: #111; }
+            .terminal { border-color: #333; box-shadow: none; }
+            .prompt, .prompt-user, .prompt-path { color: #333 !important; }
+            .output, .project-desc, .skill-item { color: #111 !important; }
+            .project-card { background: #f5f5f5; border-color: #ccc; }
+            .terminal { background: #fff; }
+            .footer-note { color: #333 !important; }
+        }
+
+        .footer-note {
+            color: #00ff00;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid rgba(0,255,0,0.3);
+        }
+        .footer-note a { color: #00ffff; }
+        .command-line:focus-within .cursor { opacity: 0; }
+        .command-line .prompt, .command-line .prompt-user, .command-line .prompt-path { font-size: 18px; }
     </style>
 </head>
 <body>
@@ -404,34 +446,47 @@
                     </div>
                     <div class="output" style="margin-left: 20px;" id="bio-output"></div>
 
-                    <div class="output" style="margin-top: 20px;">
-                        <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat contact.txt
+                    <div class="section" id="section-contact">
+                        <div class="output" style="margin-top: 20px;">
+                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat contact.txt
+                        </div>
+                        <div class="output" style="margin-left: 20px;" id="contact-output"></div>
                     </div>
-                    <div class="output" style="margin-left: 20px;" id="contact-output"></div>
 
-                    <div class="section">
+                    <div class="section" id="section-projects">
                         <div class="output">
                             <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> ls -la projects/
                         </div>
                         <div id="projects-container"></div>
                     </div>
 
-                    <div class="section">
+                    <div class="section" id="section-skills">
                         <div class="output">
                             <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat skills.conf
                         </div>
                         <div class="skills-grid" id="skills-container"></div>
                     </div>
 
-                    <div class="section">
+                    <div class="section" id="section-education">
                         <div class="output">
                             <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat education.txt
                         </div>
                         <div class="output" style="margin-left: 20px; margin-top: 15px;" id="education-output"></div>
                     </div>
 
-                    <div class="output" style="margin-top: 30px;">
-                        <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> <span class="cursor"></span>
+                    <div class="section" id="section-certifications">
+                        <div class="output">
+                            <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat certs.txt
+                        </div>
+                        <div class="output" style="margin-left: 20px; margin-top: 15px;" id="certifications-output"></div>
+                    </div>
+
+                    <div class="section" id="section-github-stats" style="margin-top: 15px;"></div>
+
+                    <div class="output command-line" style="margin-top: 30px;">
+                        <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span>
+                        <input type="text" class="command-input" id="command-input" placeholder=" " autocomplete="off" spellcheck="false" aria-label="Enter command">
+                        <span class="cursor" id="input-cursor"></span>
                     </div>
                 </div>
             </div>
@@ -453,6 +508,14 @@
                 </div>
             </div>
         </div>
+
+        <footer class="footer-note">
+            Security tools and scripts on this site are for authorized testing and education only.
+            <br>
+            <a href="mailto:saherscafi@gmail.com?subject=Security%20disclosure">Report a vulnerability</a> (responsible disclosure).
+            <br>
+            Content from data.json · Hosted on GitHub Pages · Updated 2025
+        </footer>
     </div>
 
     <script>
@@ -509,11 +572,73 @@
                     renderProjects(data.projects);
                     renderSkills(data.skills);
                     renderEducation(data.education);
+                    renderCertifications(data.certifications);
+                    setupCommandInput();
+                    fetchGitHubStats();
                 })
                 .catch(() => {
                     const msg = '<span class="output-error">[ERROR] Could not load portfolio data. Check data.json.</span>';
                     document.getElementById('bio-output').innerHTML = msg;
                 });
+        }
+
+        function renderCertifications(certs) {
+            const el = document.getElementById('certifications-output');
+            if (!el || !certs || !certs.length) return;
+            const html = certs.map(c =>
+                `<span style="color: #00ffff;">${escapeHtml(c.name)}</span> <span style="color: #ffff00;">${escapeHtml(c.status)}</span><br>`
+            ).join('');
+            el.innerHTML = html;
+        }
+
+        function fetchGitHubStats() {
+            const container = document.getElementById('section-github-stats');
+            if (!container) return;
+            fetch('https://api.github.com/users/sscafi')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(user => {
+                    const repos = user.public_repos;
+                    const html = `<div class="output">
+                        <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> github --stats
+                    </div>
+                    <div class="output" style="margin-left: 20px;">
+                        <span class="output-info">Public repos: ${repos}</span>
+                    </div>`;
+                    container.innerHTML = html;
+                })
+                .catch(() => { container.innerHTML = ''; });
+        }
+
+        function setupCommandInput() {
+            const input = document.getElementById('command-input');
+            const cursor = document.getElementById('input-cursor');
+            if (!input) return;
+            const commands = {
+                contact: 'section-contact',
+                projects: 'section-projects',
+                skills: 'section-skills',
+                education: 'section-education',
+                certs: 'section-certifications',
+                help: null
+            };
+            input.addEventListener('keydown', function(e) {
+                if (e.key !== 'Enter') return;
+                e.preventDefault();
+                const cmd = (this.value || '').trim().toLowerCase();
+                this.value = '';
+                if (commands[cmd] && commands[cmd] !== null) {
+                    const el = document.getElementById(commands[cmd]);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (cmd === 'help' || cmd === '') {
+                    const help = 'Commands: contact | projects | skills | education | certs | help';
+                    const line = document.createElement('div');
+                    line.className = 'output';
+                    line.style.marginLeft = '20px';
+                    line.innerHTML = '<span class="output-info">' + help + '</span>';
+                    input.parentElement.insertBefore(line, input);
+                }
+            });
+            setTimeout(function() { input.focus(); }, 100);
         }
 
         function renderBio(bio) {
