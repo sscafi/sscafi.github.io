@@ -402,128 +402,32 @@
                     <div class="output">
                         <span class="prompt-user">SSCAFI</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> whoami
                     </div>
-                    <div class="output" style="margin-left: 20px;">
-                        > Software Engineer | Cybersecurity Enthusiast<br>
-                        > Passionate about AI/ML, Robotics & Security<br>
-                        > York University - B.Sc. Computer Science<br>
-                        > Focus: Networks & Security, Mobile Apps, AI/ML
-                    </div>
+                    <div class="output" style="margin-left: 20px;" id="bio-output"></div>
 
                     <div class="output" style="margin-top: 20px;">
                         <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat contact.txt
                     </div>
-                    <div class="output" style="margin-left: 20px;">
-                        📧 <a href="mailto:saherscafi@gmail.com">sscafi</a><br>
-                        💼 <a href="https://www.linkedin.com/in/sscafi/" target="_blank">sscafi</a><br>
-                        💻 <a href="https://github.com/sscafi" target="_blank">sscafi</a><br>
-                        🏆 <a href="https://leetcode.com/sscafi/" target="_blank">sscafi</a>
-                    </div>
+                    <div class="output" style="margin-left: 20px;" id="contact-output"></div>
 
                     <div class="section">
                         <div class="output">
                             <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> ls -la projects/
                         </div>
-                        
-                        <div class="project-card">
-                            <div class="project-title">🔐 CryptoCrowd Sentiment Analysis</div>
-                            <div class="project-tech">[AWS] [React] [Node.js] [Express] [NLP]</div>
-                            <div class="project-desc">
-                                Cryptocurrency sentiment analysis on Twitter posts with real-time NLP processing. 
-                                Features autoscaling infrastructure and stateless architecture using ElastiCache and S3.
-                            </div>
-                            <div><a href="https://github.com/sscafi/Crypto-Crowd-Sentiment-Analysis" target="_blank" class="project-link">→ View Source</a></div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="project-title">💼 Company Asset Trading</div>
-                            <div class="project-tech">[Java] [MariaDB] [Swing]</div>
-                            <div class="project-desc">
-                                Client-server trading system with marketplace model for virtual asset management.
-                                Implements role-based access control and real-time transaction processing.
-                            </div>
-                            <div><a href="https://github.com/sscafi/Company-Asset-Trading" target="_blank" class="project-link">→ View Source</a></div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="project-title">📋 Job Application Tracker</div>
-                            <div class="project-tech">[Laravel] [PHP] [MySQL] [Bootstrap]</div>
-                            <div class="project-desc">
-                                Full-stack application tracking system with calendar integration and file management.
-                                Built with Laravel MVC architecture and RESTful API design.
-                            </div>
-                            <div><a href="https://github.com/sscafi/job-tracker" target="_blank" class="project-link">→ View Source</a></div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="project-title">🤖 Jarvis - AI Assistant</div>
-                            <div class="project-tech">[Python] [NLP] [MySQL] [NLTK] [spaCy]</div>
-                            <div class="project-desc">
-                                AI assistant with natural language processing and recommendation system.
-                                Learns user preferences and provides personalized recommendations using collaborative filtering.
-                            </div>
-                            <div><a href="https://github.com/sscafi/python_projects/tree/main/Jarvis" target="_blank" class="project-link">→ View Source</a></div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="project-title">🎵 Spotify Library Sort</div>
-                            <div class="project-tech">[JavaScript] [Node.js] [Spotify API] [Python]</div>
-                            <div class="project-desc">
-                                Music sorting system using BPM analysis with librosa for audio feature extraction.
-                                Automated playlist organization with recommendation algorithms.
-                            </div>
-                            <div><a href="https://github.com/sscafi/spotify" target="_blank" class="project-link">→ View Source</a></div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="project-title">🌳 Family Tree Shortest Path</div>
-                            <div class="project-tech">[Python] [Graph Algorithms] [BFS]</div>
-                            <div class="project-desc">
-                                Breadth-first search implementation for minimal spanning tree generation.
-                                Calculates relationship paths through parent-child graph structures.
-                            </div>
-                            <div><a href="https://github.com/sscafi/python_projects/blob/main/FamilyTree-bfs.py" target="_blank" class="project-link">→ View Source</a></div>
-                        </div>
+                        <div id="projects-container"></div>
                     </div>
 
                     <div class="section">
                         <div class="output">
                             <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat skills.conf
                         </div>
-                        
-                        <div class="skills-grid">
-                            <div class="skill-item">Python</div>
-                            <div class="skill-item">JavaScript</div>
-                            <div class="skill-item">Java</div>
-                            <div class="skill-item">C++</div>
-                            <div class="skill-item">React</div>
-                            <div class="skill-item">Node.js</div>
-                            <div class="skill-item">MySQL</div>
-                            <div class="skill-item">MongoDB</div>
-                            <div class="skill-item">Git</div>
-                            <div class="skill-item">Linux</div>
-                            <div class="skill-item">Kali Linux</div>
-                            <div class="skill-item">Wireshark</div>
-                            <div class="skill-item">Metasploit</div>
-                            <div class="skill-item">Nmap</div>
-                            <div class="skill-item">Burp Suite</div>
-                            <div class="skill-item">AWS</div>
-                        </div>
+                        <div class="skills-grid" id="skills-container"></div>
                     </div>
 
                     <div class="section">
                         <div class="output">
                             <span class="prompt-user">sscafi</span><span class="prompt">@</span><span class="prompt-path">terminal</span><span class="prompt">:</span><span class="prompt-path">~</span><span class="prompt">$</span> cat education.txt
                         </div>
-                        <div class="output" style="margin-left: 20px; margin-top: 15px;">
-                            <span style="color: #00ffff;">🎓 York University</span><br>
-                            <span style="color: #ffff00;">Bachelor of Computer Science (2022)</span><br>
-                            <span style="color: #00ff00;">
-                            ├── Major: Computer Science<br>
-                            ├── Minor: Networks & Security<br>
-                            ├── Minor: Mobile Applications<br>
-                            └── Minor: Artificial Intelligence & Machine Learning
-                            </span>
-                        </div>
+                        <div class="output" style="margin-left: 20px; margin-top: 15px;" id="education-output"></div>
                     </div>
 
                     <div class="output" style="margin-top: 30px;">
@@ -593,7 +497,74 @@
         setTimeout(() => {
             document.getElementById('boot-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
+            loadPortfolioData();
         }, 2500);
+
+        function loadPortfolioData() {
+            fetch('data.json')
+                .then(res => { if (!res.ok) throw new Error('Failed to load'); return res.json(); })
+                .then(data => {
+                    renderBio(data.bio);
+                    renderContact(data.contact);
+                    renderProjects(data.projects);
+                    renderSkills(data.skills);
+                    renderEducation(data.education);
+                })
+                .catch(() => {
+                    const msg = '<span class="output-error">[ERROR] Could not load portfolio data. Check data.json.</span>';
+                    document.getElementById('bio-output').innerHTML = msg;
+                });
+        }
+
+        function renderBio(bio) {
+            document.getElementById('bio-output').innerHTML = (bio.lines || []).join('<br>');
+        }
+
+        function renderContact(contact) {
+            const html = (contact || []).map(c => {
+                const target = c.external ? ' target="_blank"' : '';
+                return `${c.icon} <a href="${c.url}"${target}>${c.label}</a>`;
+            }).join('<br>');
+            document.getElementById('contact-output').innerHTML = html;
+        }
+
+        function renderProjects(projects) {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = (projects || []).map(p => {
+                const techStr = (p.tech || []).map(t => `[${t}]`).join(' ');
+                return `
+                    <div class="project-card">
+                        <div class="project-title">${p.emoji || '📁'} ${escapeHtml(p.title)}</div>
+                        <div class="project-tech">${escapeHtml(techStr)}</div>
+                        <div class="project-desc">${escapeHtml(p.description)}</div>
+                        <div><a href="${escapeHtml(p.url)}" target="_blank" class="project-link">→ View Source</a></div>
+                    </div>`;
+            }).join('');
+        }
+
+        function renderSkills(skills) {
+            document.getElementById('skills-container').innerHTML = (skills || [])
+                .map(s => `<div class="skill-item">${escapeHtml(s)}</div>`).join('');
+        }
+
+        function renderEducation(edu) {
+            if (!edu) return;
+            const bulletsArr = edu.bullets || [];
+            const bullets = bulletsArr.map((b, i) => {
+                const prefix = i === bulletsArr.length - 1 ? '└──' : '├──';
+                return `${prefix} ${b}`;
+            }).join('<br>');
+            document.getElementById('education-output').innerHTML =
+                `<span style="color: #00ffff;">🎓 ${escapeHtml(edu.school)}</span><br>
+                 <span style="color: #ffff00;">${escapeHtml(edu.degree)}</span><br>
+                 <span style="color: #00ff00;">${bullets}</span>`;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
         // Prevent right-click for that hacker feel (optional)
         // document.addEventListener('contextmenu', e => e.preventDefault());

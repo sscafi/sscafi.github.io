@@ -1,0 +1,57 @@
+{
+  "bio": {
+    "lines": [
+      "> Software Engineer | Cybersecurity Enthusiast",
+      "> Passionate about AI/ML, Robotics & Security",
+      "> York University - B.Sc. Computer Science",
+      "> Focus: Networks & Security, Mobile Apps, AI/ML"
+    ]
+  },
+  "contact": [
+    { "icon": "📧", "label": "Email", "url": "mailto:saherscafi@gmail.com" },
+    { "icon": "💼", "label": "LinkedIn", "url": "https://www.linkedin.com/in/sscafi/", "external": true },
+    { "icon": "💻", "label": "GitHub", "url": "https://github.com/sscafi", "external": true },
+    { "icon": "🏆", "label": "LeetCode", "url": "https://leetcode.com/sscafi/", "external": true }
+  ],
+  "projects": [
+    {
+      "title": "Firmware Analyzer Tool",
+      "emoji": "🔧",
+      "tech": ["Python", "Docker"],
+      "description": "Firmware analysis tool built with Python and Docker for scalability. Designed to parse, extract, and analyze firmware images with containerized workflows.",
+      "url": "https://github.com/sscafi/firmwareAnalyzer"
+    },
+    {
+      "title": "Domain Checker - Production Ready Security Tool",
+      "emoji": "🛡️",
+      "tech": ["Python", "Tkinter"],
+      "description": "Comprehensive domain security analysis tool that helps identify potentially suspicious or fraudulent websites. Features advanced security checks, caching, and a modern user interface.",
+      "url": "https://github.com/sscafi/iswebsite_legit"
+    },
+    {
+      "title": "Cybersecurity Labs & Scripts",
+      "emoji": "🔐",
+      "tech": ["Python", "Bash", "Security"],
+      "description": "Educational scripts and completed labs from PortSwigger Academy, HackTheBox, and CTFs. Includes custom security automation scripts and write-ups.",
+      "url": "https://github.com/sscafi/cybersec"
+    }
+  ],
+  "skills": [
+    "Python", "JavaScript", "Java", "C++", "React", "Node.js",
+    "MySQL", "MongoDB", "Git", "Linux", "Kali Linux", "Docker",
+    "Wireshark", "Metasploit", "Nmap", "Burp Suite", "AWS",
+    "Penetration Testing", "OWASP", "Vulnerability Assessment",
+    "Network Reconnaissance", "Web App Security", "Cryptography",
+    "Reverse Engineering", "SOC Analysis"
+  ],
+  "education": {
+    "school": "York University",
+    "degree": "Bachelor of Computer Science (2022)",
+    "bullets": [
+      "Major: Computer Science",
+      "Minor: Networks & Security",
+      "Minor: Mobile Applications",
+      "Minor: Artificial Intelligence & Machine Learning"
+    ]
+  }
+}
